@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { serverPath } from '../../utils/constant'
+import { getTestData } from "../../utils/function"
 
 function FormApplication() {
 	document.body.classList.add('flex-center', 'radial-bg')
@@ -7,10 +9,58 @@ function FormApplication() {
 	const [phone, setPhone] = useState('')
 	const [email, setEmail] = useState('')
 	const [product, setProduct] = useState('course-html')
+	const [testData, setTestData] = useState([])
+	const [flag, setFlag] = useState(true)
 
+	//Получаем тестовые данные с сервера
+	useEffect(() => {
+		fetch(serverPath + 'testData')
+			.then((res) => {
+				return res.json()
+			})
+			.then((data) => {
+				setTestData(data)
+			})
+			.catch((err) => console.log(err.message))
+		
+	}, [])
+	// Заполняем поля случайными данными
+	useEffect(() => {
+		const test = getTestData(testData)
+		if (test) {
+		setFullName(test.fullName)
+		setPhone(test.phone)
+		setEmail(test.email)
+		setProduct(test.product)
+		}
+	}, [testData, flag])
+
+	// Добавляем заявку в базу данных
 	const handleSubmit = (evt) => {
 		evt.preventDefault()
-		
+		const date = new Date().toISOString()
+		// Формируем заявку
+		const request = {
+			status: 'new',
+			date: date,
+			fullName,
+			phone,
+			email,
+			product
+		}
+		// Отправляем заявку на сервер
+		fetch(serverPath + 'requests', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(request),
+		})
+			.then(() => {
+				setFlag(!flag)
+			})
+			.catch((err) => {
+				console.log(err.message)
+			})
+
 	}
 
    return (
@@ -28,9 +78,7 @@ function FormApplication() {
 						<label>Ваши данные:</label>
 						<div className='form-group'>
 							<input
-								id='name'
 								type='text'
-								name='name'
 								autoComplete='on'
 								className='form-control'
 								placeholder='Имя и Фамилия'
@@ -41,9 +89,7 @@ function FormApplication() {
 						</div>
 						<div className='form-group'>
 							<input
-								id='phone'
 								type='text'
-								name='phone'
 								autoComplete='on'
 								className='form-control'
 								placeholder='Телефон'
@@ -53,9 +99,7 @@ function FormApplication() {
 						</div>
 						<div className='form-group'>
 							<input
-								id='email'
 								type='email'
-								name='email'
 								autoComplete='on'
 								className='form-control'
 								placeholder='Email'
@@ -65,7 +109,7 @@ function FormApplication() {
 							/>
 						</div>
 						<div className='form-group'>
-							<label htmlFor='product'>Продукт:</label>
+							<label>Продукт:</label>
 							<select
 								className='form-control'
 								value={product}
