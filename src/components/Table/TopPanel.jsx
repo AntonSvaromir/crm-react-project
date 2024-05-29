@@ -1,4 +1,4 @@
-function Filter({ setProduct, product, setStatus, status }) {
+function TopPanel({ setProduct, product, setStatus, status }) {
 	return (
 		<form action=''>
 			<div className='row mb-3 justify-content-start'>
@@ -13,8 +13,7 @@ function Filter({ setProduct, product, setStatus, status }) {
 								evt.preventDefault()
 								setStatus('all')
 							}}
-							className={`btn btn-light ${status === 'all' ? 'active' : ''}`}
-							>
+							className={`btn btn-light ${status === 'all' ? 'active' : ''}`}>
 							Все
 						</button>
 						<button
@@ -22,8 +21,7 @@ function Filter({ setProduct, product, setStatus, status }) {
 								evt.preventDefault()
 								setStatus('new')
 							}}
-							className={`btn btn-light ${status === 'new' ? 'active' : ''}`}
-							>
+							className={`btn btn-light ${status === 'new' ? 'active' : ''}`}>
 							Новые
 						</button>
 						<button
@@ -31,8 +29,9 @@ function Filter({ setProduct, product, setStatus, status }) {
 								evt.preventDefault()
 								setStatus('inWork')
 							}}
-							className={`btn btn-light ${status === 'inWork' ? 'active' : ''}`}
-							>
+							className={`btn btn-light ${
+								status === 'inWork' ? 'active' : ''
+							}`}>
 							В работе
 						</button>
 						<button
@@ -40,8 +39,9 @@ function Filter({ setProduct, product, setStatus, status }) {
 								evt.preventDefault()
 								setStatus('complete')
 							}}
-							className={`btn btn-light ${status === 'complete' ? 'active' : ''}`}
-							>
+							className={`btn btn-light ${
+								status === 'complete' ? 'active' : ''
+							}`}>
 							Завершенные
 						</button>
 					</div>
@@ -64,4 +64,4 @@ function Filter({ setProduct, product, setStatus, status }) {
 	)
 }
 
-export default Filter;
+export default TopPanel

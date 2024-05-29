@@ -1,4 +1,4 @@
-function LeftPanel() {
+function LeftPanel({setStatus, status, newRequestAmount}) {
    return (
 			<div className='left-panel blue-skin'>
 				<div className='left-panel__logo'>
@@ -20,27 +20,55 @@ function LeftPanel() {
 					<div className='left-panel__navigation-title'>Заявки</div>
 					<ul>
 						<li>
-							<a data-value='all' href='/' className='active'>
-								Все вместе
-							</a>
+							<button
+								onClick={(evt) => {
+									evt.preventDefault()
+									setStatus('all')
+								}}
+								className={`left-panel__btn ${
+									status === 'all' ? 'active' : ''
+								}`}>
+								Все
+							</button>
 						</li>
 						<li>
-							<a data-value='new' href='/'>
+							<button
+								onClick={(evt) => {
+									evt.preventDefault()
+									setStatus('new')
+								}}
+								className={`left-panel__btn ${
+									status === 'new' ? 'active' : ''
+								}`}>
 								Новые
 								<div className='badge' id='badge-new'>
-									12
+									{newRequestAmount}
 								</div>
-							</a>
+							</button>
 						</li>
 						<li>
-							<a data-value='inWork' href='/'>
+							<button
+								onClick={(evt) => {
+									evt.preventDefault()
+									setStatus('inWork')
+								}}
+								className={`left-panel__btn ${
+									status === 'inWork' ? 'active' : ''
+								}`}>
 								В работе
-							</a>
+							</button>
 						</li>
 						<li>
-							<a data-value='complete' href='/'>
+							<button
+								onClick={(evt) => {
+									evt.preventDefault()
+									setStatus('complete')
+								}}
+								className={`left-panel__btn ${
+									status === 'complete' ? 'active' : ''
+								}`}>
 								Завершенные
-							</a>
+							</button>
 						</li>
 					</ul>
 				</div>

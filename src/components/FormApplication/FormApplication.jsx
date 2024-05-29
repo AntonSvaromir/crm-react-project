@@ -1,7 +1,8 @@
+// import  {testData}  from "../../utils/testData"
 import { useEffect, useState } from "react"
-import { serverPath } from '../../utils/constant'
+import { serverPath, testData } from '../../utils/constant'
 import { getTestData } from "../../utils/function"
-import testData from "../../utils/testData"
+// import testData from "../../utils/testData"
 
 function FormApplication() {
 	document.body.classList.remove('body--dashboard')

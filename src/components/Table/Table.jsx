@@ -1,42 +1,50 @@
-import { useState } from "react"
-import {Filter, LeftPanel, Requests, TableHead} from "./index"
-import useFetch from "../../utils/useFetch"
-import { serverPath } from "../../utils/constant"
-import ErrorPage from "../ErrorPage"
+import { useEffect, useState } from 'react'
+import { TopPanel, LeftPanel, Requests, TableHead } from './index.js'
+import { serverPath } from '../../utils/constant'
+import { filterRequest, newRequests } from '../../utils/function.js'
+import useFetch from '../../utils/useFetch'
+import ErrorPage from '../ErrorPage'
 
 function Table() {
 	document.body.classList.remove('flex-center', 'radial-bg')
 	document.body.classList.add('body--dashboard')
+	// Загрузка из LocaleStorage значений фильтра
+	const statusLocalStorage = JSON.parse(localStorage.getItem('status')) || 'all'
+	const productLocalStorage = JSON.parse(localStorage.getItem('product')) || 'all'
 
 	const { data, isLoading, error } = useFetch(serverPath + 'requests')
-	const [product, setProduct] = useState('all')
-	const [status, setStatus] = useState('all')
-	
-
-	function filter(data, product, status) {
-		let filterRequest = []
-
-		if (product === 'all') {
-			filterRequest = [...data]
-		} else {
-			filterRequest = data.filter((item) => item.product === product)
+	const [product, setProduct] = useState(productLocalStorage)
+	const [status, setStatus] = useState(statusLocalStorage)
+	const [newRequestAmount, setNewRequestAmount] = useState(0)
+	// Сохранение в LocaleStorage значений фильтра
+	useEffect(() => {
+		localStorage.setItem('status', JSON.stringify(status))
+		localStorage.setItem('product', JSON.stringify(product))
+	}, [product, status])
+	// Получение количества новых заявок
+	useEffect(() => {
+		if (data) {
+			setNewRequestAmount(newRequests(data))
 		}
+	}, [data])
 
-		if (status !== 'all') {
-			filterRequest = filterRequest.filter((item) => item.status === status)
-		}
-
-		return filterRequest
-	}
-	
 	return (
 		<>
-			<LeftPanel />
+			<LeftPanel
+				setStatus={setStatus}
+				status={status}
+				newRequestAmount={newRequestAmount}
+			/>
 			<div className='main-wrapper'>
 				<div className='container-fluid'>
 					<div className='admin-heading-1'>Все заявки</div>
 
-					<Filter setProduct={setProduct} setStatus={setStatus} status={status} />
+					<TopPanel
+						setProduct={setProduct}
+						product={product}
+						setStatus={setStatus}
+						status={status}
+					/>
 
 					<table className='table fs-14'>
 						<TableHead />
@@ -55,7 +63,7 @@ function Table() {
 									</th>
 								</tr>
 							)}
-							{data && <Requests data={filter(data, product, status)} />}
+							{data && <Requests data={filterRequest(data, product, status)} />}
 						</tbody>
 					</table>
 				</div>

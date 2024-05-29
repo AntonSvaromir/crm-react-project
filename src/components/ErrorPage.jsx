@@ -5,7 +5,7 @@ function ErrorPage() {
 		<div className='error__wrap'>
 			<div className='error__logo'>
 				<h1>404</h1>
-				<h2> Sorry - Request not Found!</h2>
+				<h2> Sorry - Page not Found!</h2>
 				<div className='error__sub'>
 					
 						<Link to={'/table'}> Вернутся к Таблице с заявками</Link>

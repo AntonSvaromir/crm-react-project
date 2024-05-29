@@ -155,7 +155,18 @@ body {
 	padding: 0;
 	margin-bottom: 0px;
 }
-.left-panel__navigation a {
+.left-panel__btn {
+  padding: 0;
+  text-align: left;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* отображаем курсор в виде руки при наведении; некоторые
+  считают, что необходимо оставлять стрелочный вид для кнопок */
+  cursor: pointer;
+}
+.left-panel__navigation .left-panel__btn {
 	color: #cbdceb;
 	display: block;
 	width: 280px;
@@ -170,8 +181,8 @@ body {
 	border-radius: 80px 0px 0px 80px;
 	transition: 100ms all ease-out;
 }
-.left-panel__navigation a:hover,
-.left-panel__navigation a.active {
+.left-panel__navigation .left-panel__btn:hover,
+.left-panel__navigation .left-panel__btn.active {
 	text-decoration: none;
 	background-color: #2865b1;
 	color: #fff;
@@ -835,3 +846,4 @@ body.with-nav .left-panel {
 	font-family: arial, serif;
 	font-weight:bold;
 }	
+

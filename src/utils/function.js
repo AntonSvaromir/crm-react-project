@@ -1,14 +1,15 @@
-function getRandomInd(max) {
-	return Math.floor(Math.random() * max)
-}
-
+// Получение рандомного элемента из массива
  function getTestData(data) {
 	const randomIndex = Math.floor(Math.random() * data.length)
-	const testRequest = data[randomIndex]
-	return testRequest
+	const randomElm = data[randomIndex]
+	return randomElm
 }
-
-function filter(data, product, status) {
+// Только новые заявки
+function newRequests(data) {
+	return data.filter((item) => item.status === 'new').length
+}
+// Фильтр заявок по Статусу выполнения и Продукту
+function filterRequest(data, product, status) {
 	let filterRequest = []
 
 	if (product === 'all') {
@@ -23,4 +24,4 @@ function filter(data, product, status) {
 
 	return filterRequest
 }
-export {getRandomInd, getTestData, filter }
+export { getTestData, filterRequest, newRequests  }

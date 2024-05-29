@@ -75,7 +75,7 @@ const testData = [
 		phone: '+7(965)1020595',
 		email: 'sergeeva@example.org',
 		product: 'course-wordpress',
-	},
+	}
 ]
 
-export default testData
+export  {testData}

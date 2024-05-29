@@ -8,7 +8,6 @@ function Requests({data}) {
 		const {id, date, fullName, phone, email, product, status} = request
 		const localeDate = new Date(date).toLocaleDateString()
 		
-		
 		return (
 			<tr key={'req' + id}>
 				<th scope='row'>{id}</th>
