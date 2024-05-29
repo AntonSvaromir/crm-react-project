@@ -8,5 +8,19 @@ function getRandomInd(max) {
 	return testRequest
 }
 
+function filter(data, product, status) {
+	let filterRequest = []
 
-export {getRandomInd, getTestData }
+	if (product === 'all') {
+		filterRequest = [...data]
+	} else {
+		filterRequest = data.filter((item) => item.product === product)
+	}
+
+	if (status !== 'all') {
+		filterRequest = filterRequest.filter((item) => item.status === status)
+	}
+
+	return filterRequest
+}
+export {getRandomInd, getTestData, filter }

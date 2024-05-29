@@ -764,7 +764,7 @@ body {
 
 .project-nav {
 	display: block;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -799,3 +799,39 @@ body.with-nav .left-panel {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+/* --------- Стили страницы 404 */
+
+.error__wrap {
+	margin:0 auto;
+	width:1000px;
+}
+.error__logo h1{
+	font-size:200px;
+	color:#FF7A00;
+	text-align:center;
+	margin-bottom:1px;
+	text-shadow:4px 4px 1px white;
+}	
+.error__logo h2{
+	color:#B1A18D;
+	font-size:40px;
+	margin-top:10px;
+	text-align:center;
+}	
+.error__logo p span{
+	color:lightgreen;
+}
+.error__sub {
+	display: block;
+	margin-top: 40px;
+	text-align:center;
+
+}
+.error__sub a{
+	color:#ff7a00;
+	text-decoration:none;
+	padding:15px;
+	font-size:22px;
+	font-family: arial, serif;
+	font-weight:bold;
+}	

@@ -1,43 +1,27 @@
 import { useEffect, useState } from "react"
 import { serverPath } from '../../utils/constant'
 import { getTestData } from "../../utils/function"
-import useFetch from "../../utils/useFetch"
+import testData from "../../utils/testData"
 
 function FormApplication() {
+	document.body.classList.remove('body--dashboard')
 	document.body.classList.add('flex-center', 'radial-bg')
-
+	
 	const [fullName, setFullName] = useState('')
 	const [phone, setPhone] = useState('')
 	const [email, setEmail] = useState('')
 	const [product, setProduct] = useState('course-html')
-	// const [testData, setTestData] = useState([])
 	const [flag, setFlag] = useState(true)
 
-	//Получаем тестовые данные с сервера
-	const { data } = useFetch(serverPath + 'testData')
-	// useEffect(() => {
-	// 	fetch(serverPath + 'testData')
-	// 		.then((res) => {
-	// 			return res.json()
-	// 		})
-	// 		.then((data) => {
-	// 			setTestData(data)
-	// 		})
-	// 		.catch((err) => console.log(err.message))
-		
-	// }, [])
-
-	
+	// Заполняем поля случайными данными	
 	useEffect(() => {
-		// Заполняем поля случайными данными
-		if (data) {
-			const test = getTestData(data)
+			const test = getTestData(testData)
 			setFullName(test.fullName)
 			setPhone(test.phone)
 			setEmail(test.email)
 			setProduct(test.product)
-		}
-	}, [data, flag])
+		
+	}, [flag])
 
 	// Добавляем заявку в базу данных
 	const handleSubmit = (evt) => {
