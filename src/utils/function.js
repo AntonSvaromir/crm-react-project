@@ -1,5 +1,5 @@
 // Получение рандомного элемента из массива
- function getTestData(data) {
+function getTestData(data) {
 	const randomIndex = Math.floor(Math.random() * data.length)
 	const randomElm = data[randomIndex]
 	return randomElm
@@ -24,4 +24,19 @@ function filterRequest(data, product, status) {
 
 	return filterRequest
 }
-export { getTestData, filterRequest, newRequests  }
+// Разделение массива по количеству элементов
+function separationMultiple(data, elm = 10) {
+	const arrData = [...data].reverse()
+	let page
+	let pages = []
+	for (let i = 0; i < data.length; i = i + elm) {
+		if (arrData.length > elm) {
+			page = arrData.splice(0, elm)
+			pages.push([...page])
+		} else {
+			pages.push(arrData)
+		}
+	}
+	return pages
+}
+export { getTestData, filterRequest, newRequests, separationMultiple }

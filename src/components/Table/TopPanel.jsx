@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 function TopPanel({ setProduct, product, setStatus, status }) {
+	const nav = useNavigate()
 	return (
 		<form action=''>
 			<div className='row mb-3 justify-content-start'>
@@ -12,6 +15,7 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('all')
+								nav('page1')
 							}}
 							className={`btn btn-light ${status === 'all' ? 'active' : ''}`}>
 							Все
@@ -20,6 +24,7 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('new')
+								nav('page1')
 							}}
 							className={`btn btn-light ${status === 'new' ? 'active' : ''}`}>
 							Новые
@@ -28,6 +33,7 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('inWork')
+								nav('page1')
 							}}
 							className={`btn btn-light ${
 								status === 'inWork' ? 'active' : ''
@@ -38,6 +44,7 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('complete')
+								nav('page1')
 							}}
 							className={`btn btn-light ${
 								status === 'complete' ? 'active' : ''
@@ -50,7 +57,10 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 					<select
 						className='custom-select'
 						value={product}
-						onChange={(evt) => setProduct(evt.target.value)}>
+						onChange={(evt) => {
+							setProduct(evt.target.value)
+							nav('page1')
+							}}>
 						<option value='all'>Все продукты</option>
 						<option value='course-html'>Курс по верстке</option>
 						<option value='course-js'>Курс по JavaScript</option>

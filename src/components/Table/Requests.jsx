@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { productRequest, statusClassName, statusName } from "../../utils/constant"
 
 function Requests({data}) {
-	
+	const params = useLocation()
 
 	const requests = data.map((request) => {
 		const {id, date, fullName, phone, email, product, status} = request
@@ -20,7 +20,7 @@ function Requests({data}) {
 					<div className={statusClassName[status]}>{statusName[status]}</div>
 				</td>
 				<td>
-					<Link to={`/edit/${id}`} >Редактировать</Link>
+					<Link to={`/edit/${id}#${params.pathname}`}>Редактировать</Link>
 				</td>
 			</tr>
 		)
@@ -28,7 +28,7 @@ function Requests({data}) {
 
    return (
 			<>
-			{requests.reverse()}
+			{requests}
 			</>				
 		)
 }

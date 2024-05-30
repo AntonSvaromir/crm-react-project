@@ -15,7 +15,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<FormApplication />} />
 				<Route path="/edit/:id" element={<EditPage />} />
-				<Route path="/table" element={<Table />} />
+				<Route path="/table/*" element={<Table />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 		</BrowserRouter>

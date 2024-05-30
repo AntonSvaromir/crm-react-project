@@ -846,4 +846,38 @@ body.with-nav .left-panel {
 	font-family: arial, serif;
 	font-weight:bold;
 }	
+/* Стили пустой страницы */
+.empty__wrap {
+	margin:0 auto;
+	width:1000px;
+}
 
+.empty__logo h1{
+	font-size:80px;
+	color:#FF7A00;
+	text-align:center;
+	margin-top: 40px;
+	margin-bottom:1px;
+	text-shadow:4px 4px 1px white;
+}	
+.empty__logo h2{
+	color:#B1A18D;
+	font-size:40px;
+	margin-top:10px;
+	text-align:center;
+}	
+
+/* ---------- Стили навигации по страницам */
+.page__navigation {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 5px;
+	margin-top: -5px;
+	margin-bottom: 10px;
+}
+.page__navigation-link {
+	padding: 5px 5px;
+}
+.page__navigation-link--active {
+	color: #ff7a00;
+}

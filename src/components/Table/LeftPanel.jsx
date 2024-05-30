@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 function LeftPanel({setStatus, status, newRequestAmount}) {
+	const nav = useNavigate()
    return (
 			<div className='left-panel blue-skin'>
 				<div className='left-panel__logo'>
@@ -24,6 +27,7 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 								onClick={(evt) => {
 									evt.preventDefault()
 									setStatus('all')
+									nav('page1')
 								}}
 								className={`left-panel__btn ${
 									status === 'all' ? 'active' : ''
@@ -36,6 +40,7 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 								onClick={(evt) => {
 									evt.preventDefault()
 									setStatus('new')
+									nav('page1')
 								}}
 								className={`left-panel__btn ${
 									status === 'new' ? 'active' : ''
@@ -51,6 +56,7 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 								onClick={(evt) => {
 									evt.preventDefault()
 									setStatus('inWork')
+									nav('page1')
 								}}
 								className={`left-panel__btn ${
 									status === 'inWork' ? 'active' : ''
@@ -63,6 +69,7 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 								onClick={(evt) => {
 									evt.preventDefault()
 									setStatus('complete')
+									nav('page1')
 								}}
 								className={`left-panel__btn ${
 									status === 'complete' ? 'active' : ''
