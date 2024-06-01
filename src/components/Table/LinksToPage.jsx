@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 
-function LinksToPage({ pagesRequest }) {
+export default function LinksToPage({ pagesRequest }) {
 	const pageUrl = useLocation().pathname
 
 	const linkPages = pagesRequest.map((page) => {
@@ -21,4 +21,3 @@ function LinksToPage({ pagesRequest }) {
 	return <div className='page__navigation'>{linkPages}</div>
 }
 
-export default LinksToPage

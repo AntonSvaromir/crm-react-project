@@ -3,7 +3,7 @@ import useFetch from "../../utils/useFetch";
 import EditForm from "./EditForm";
 import ErrorPage from "../ErrorPage";
 
-function EditRequest({id, backLink}) {
+export default function EditRequest({id, backLink}) {
 
    const { data, isLoading, error } = useFetch(serverPath + 'requests/' + id) 
    return (
@@ -17,4 +17,3 @@ function EditRequest({id, backLink}) {
 		)
 }
 
-export default EditRequest;

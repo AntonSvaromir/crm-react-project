@@ -1,4 +1,4 @@
-function TableHead() {
+export default function TableHead() {
    return (
 			<thead>
 				<tr>
@@ -14,5 +14,3 @@ function TableHead() {
 			</thead>
 		)
 }
-
-export default TableHead;

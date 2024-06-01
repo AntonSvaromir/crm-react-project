@@ -4,11 +4,9 @@ import FormApplication from "../FormApplication/FormApplication"
 import EditPage from "../Edit/EditPage"
 import { Table } from "../Table"
 import ErrorPage from "../ErrorPage"
-// import Table from "../Table/Table"
 
 
-
-function App() {
+export default function App() {
 	return (
 		<BrowserRouter>
 		<Nav />
@@ -23,4 +21,3 @@ function App() {
 	)
 }
 
-export default App

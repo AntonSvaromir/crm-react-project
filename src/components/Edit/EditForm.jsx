@@ -2,7 +2,7 @@ import { useState } from "react";
 import { serverPath } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 
-function EditForm({ data, backLink }) {
+export default function EditForm({ data, backLink }) {
 	const [fullName, setFullName] = useState(data.fullName)
 	const [phone, setPhone] = useState(data.phone)
 	const [email, setEmail] = useState(data.email)
@@ -151,5 +151,3 @@ function EditForm({ data, backLink }) {
 		</form>
 	)
 }
-
-export default EditForm;

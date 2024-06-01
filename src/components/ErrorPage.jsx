@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-function ErrorPage() {
+export default function ErrorPage() {
 	return (
 		<div className='error__wrap'>
 			<div className='error__logo'>
@@ -16,4 +16,4 @@ function ErrorPage() {
 	)
 }
 
-export default ErrorPage
+

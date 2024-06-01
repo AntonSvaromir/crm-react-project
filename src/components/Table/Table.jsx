@@ -7,19 +7,20 @@ import {
 	LinksToPage,
 } from './index.js'
 import { serverPath } from '../../utils/constant'
-import { filterRequest, newRequests } from '../../utils/function.js'
+import { filterNewRequests, filterRequest } from '../../utils/function.js'
 import useFetch from '../../utils/useFetch'
 import ErrorPage from '../ErrorPage'
-import {  useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-function Table() {
+export default function Table() {
 	document.body.classList.remove('flex-center', 'radial-bg')
 	document.body.classList.add('body--dashboard')
 	// Загрузка из LocaleStorage значений фильтра
 	const statusLocalStorage = JSON.parse(localStorage.getItem('status')) || 'all'
 	const productLocalStorage =
 		JSON.parse(localStorage.getItem('product')) || 'all'
-	const pageLocationLocalStorage = JSON.parse(localStorage.getItem('pageLocation')) || 'page1'
+	const pageLocationLocalStorage =
+		JSON.parse(localStorage.getItem('pageLocation')) || 'page1'
 
 	const { data, isLoading, error } = useFetch(serverPath + 'requests')
 	const [product, setProduct] = useState(productLocalStorage)
@@ -36,20 +37,23 @@ function Table() {
 			navigate(pageLocationLocalStorage)
 		}
 	}, [])
-	
+
 	// Сохранение в LocaleStorage значений фильтра и страницы
 	const pageLocation = useLocation().pathname.split('/')
 	const pageLocationLastValue = pageLocation[pageLocation.length - 1]
 	localStorage.setItem('pageLocation', JSON.stringify(pageLocationLastValue))
-		localStorage.setItem('status', JSON.stringify(status))
-		localStorage.setItem('product', JSON.stringify(product))
+	localStorage.setItem('status', JSON.stringify(status))
+	localStorage.setItem('product', JSON.stringify(product))
+
 	// Получение количества новых заявок
 	useEffect(() => {
 		if (data) {
-			setNewRequestAmount(newRequests(data))
+			setNewRequestAmount(filterNewRequests(data))
 		}
 	}, [data])
-	
+
+	console.log('Render');
+
 	return (
 		<>
 			<LeftPanel
@@ -95,11 +99,10 @@ function Table() {
 							)}
 						</tbody>
 					</table>
+					
 				</div>
 			</div>
 		</>
 	)
 }
-
-export default Table
 

@@ -1,4 +1,4 @@
-function EmptyPage() {
+export default function EmptyPage() {
    return (
 			<tr className='empty__wrap'>
 				<td colSpan='7' className='empty__logo'>
@@ -8,5 +8,3 @@ function EmptyPage() {
 			</tr>
 		)
 }
-
-export default EmptyPage;

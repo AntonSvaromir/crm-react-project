@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function Nav() {
+export default function Nav() {
 	return (
 		<nav className='project-nav'>
 			<div className='project-nav__links-wrapper'>
@@ -12,4 +12,3 @@ function Nav() {
 	)
 }
 
-export default Nav

@@ -4,13 +4,12 @@ import { useEffect } from 'react'
 import { separationMultiple } from '../../utils/function'
 import EmptyPage from './EmptyPage'
 
-function MultiplePages({ data, setPagesRequest, status, product }) {
-	
-	const pagesData = separationMultiple(data)
-	
+export default function MultiplePages({ data, setPagesRequest, status, product }) {
+	const pagesData = separationMultiple(data, 10)
+
 	useEffect(() => {
 		setPagesRequest(pagesData.map((item, index) => index + 1))
-	}, [status, product])
+	}, [status, product]) 
 
 	const pagesRoute = pagesData.map((item, index) => {
 		return (
@@ -23,10 +22,13 @@ function MultiplePages({ data, setPagesRequest, status, product }) {
 	})
 
 	return (
-		<Routes>			
-			{pagesRoute.length > 0 ? pagesRoute : <Route path='/page1' element={<EmptyPage />} />}
+		<Routes>
+			{pagesRoute.length > 0 ? (
+				pagesRoute
+			) : (
+				<Route path='/page1' element={<EmptyPage />} />
+			)}
 		</Routes>
 	)
 }
 
-export default MultiplePages

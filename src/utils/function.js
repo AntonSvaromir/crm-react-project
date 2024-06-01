@@ -5,7 +5,7 @@ function getTestData(data) {
 	return randomElm
 }
 // Только новые заявки
-function newRequests(data) {
+function filterNewRequests(data) {
 	return data.filter((item) => item.status === 'new').length
 }
 // Фильтр заявок по Статусу выполнения и Продукту
@@ -39,4 +39,4 @@ function separationMultiple(data, elm = 10) {
 	}
 	return pages
 }
-export { getTestData, filterRequest, newRequests, separationMultiple }
+export { getTestData, filterRequest, filterNewRequests, separationMultiple }

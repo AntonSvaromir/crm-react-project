@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-
-function LeftPanel({setStatus, status, newRequestAmount}) {
+import avatar from '../../Avatar01.png'
+export default function LeftPanel({setStatus, status, newRequestAmount}) {
 	const nav = useNavigate()
    return (
 			<div className='left-panel blue-skin'>
@@ -12,11 +12,11 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 				</div>
 				<div className='left-panel__user clearfix'>
 					<div className='left-panel__user-photo'>
-						<img src='img/avatars/avatar-128.jpg' alt='Avatar' />
+						<img src={avatar} alt='Avatar' />
 					</div>
 					<div className='left-panel__user-name'>
-						Петр <br />
-						Васильевич
+						Антон <br />
+						Сергеевич
 					</div>
 				</div>
 				<div className='left-panel__navigation'>
@@ -82,5 +82,3 @@ function LeftPanel({setStatus, status, newRequestAmount}) {
 			</div>
 		)
 }
-
-export default LeftPanel;

@@ -4,7 +4,7 @@ import { serverPath, testData } from '../../utils/constant'
 import { getTestData } from "../../utils/function"
 // import testData from "../../utils/testData"
 
-function FormApplication() {
+export default function FormApplication() {
 	document.body.classList.remove('body--dashboard')
 	document.body.classList.add('flex-center', 'radial-bg')
 	
@@ -130,5 +130,3 @@ function FormApplication() {
 			</div>
 		)
 }
-
-export default FormApplication

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-function TopPanel({ setProduct, product, setStatus, status }) {
+export default function TopPanel({ setProduct, product, setStatus, status }) {
 	const nav = useNavigate()
 	return (
 		<form action=''>
@@ -73,5 +73,3 @@ function TopPanel({ setProduct, product, setStatus, status }) {
 		</form>
 	)
 }
-
-export default TopPanel

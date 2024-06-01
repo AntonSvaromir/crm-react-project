@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import EditRequest from "./EditRequest";
 
-function EditPage() {
+export default function EditPage() {
 	const backLink = new URL(window.location).hash.replace(/#/g, '')
 	console.log(backLink)
    document.body.classList.remove('flex-center', 'radial-bg', 'body--dashboard')
@@ -22,5 +22,3 @@ function EditPage() {
 			</div>
 		)
 }
-
-export default EditPage;

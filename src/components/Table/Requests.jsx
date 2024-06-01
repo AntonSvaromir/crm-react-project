@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import { productRequest, statusClassName, statusName } from "../../utils/constant"
 
-function Requests({data}) {
+export default function Requests({data}) {
 	const params = useLocation()
 
 	const requests = data.map((request) => {
@@ -33,6 +33,5 @@ function Requests({data}) {
 		)
 }
 
-export default Requests;
 
 // badge - danger badge-success badge-warning
