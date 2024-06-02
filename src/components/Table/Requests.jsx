@@ -5,12 +5,13 @@ export default function Requests({data}) {
 	
 
 	const requests = data.map((request) => {
-		const {id, date, fullName, phone, email, product, status} = request
+		const { id, date, fullName, phone, email, product, status, numberRequest } =
+			request
 		const localeDate = new Date(date).toLocaleDateString()
 		
 		return (
 			<tr key={'req' + id}>
-				<th scope='row'>{id}</th>
+				<th scope='row'>{numberRequest}</th>
 				<td>{localeDate}</td>
 				<td>{productRequest[product]}</td>
 				<td>{fullName}</td>

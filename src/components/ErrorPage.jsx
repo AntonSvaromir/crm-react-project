@@ -7,9 +7,11 @@ export default function ErrorPage() {
 				<h1>404</h1>
 				<h2> Sorry - Page not Found!</h2>
 				<div className='error__sub'>
-					
-						<Link to={'/table'}> Вернутся к Таблице с заявками</Link>
-					
+					<button
+						onClick={() => window.location.reload()}
+						className='error__btn'>
+						Попробуйте перезагрузить страницу
+					</button>
 				</div>
 			</div>
 		</div>

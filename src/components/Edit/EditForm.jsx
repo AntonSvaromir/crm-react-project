@@ -39,7 +39,7 @@ export default function EditForm({ data }) {
 							<strong>ID:</strong>
 						</div>
 						<div className='col'>
-							Заявка №<span id='number'>{data.id}</span>
+							Заявка №<span id='number'>{data.numberRequest}</span>
 						</div>
 						<input name='id' type='hidden' id='id' />
 					</div>

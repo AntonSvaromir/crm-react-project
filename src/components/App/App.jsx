@@ -1,9 +1,9 @@
 import { HashRouter, Route, Routes } from "react-router-dom"
 import Nav from "../Nav/Nav"
-import FormApplication from "../FormApplication/FormApplication"
 import EditPage from "../Edit/EditPage"
 import { Table } from "../Table"
 import ErrorPage from "../ErrorPage"
+import FormWrapper from "../FormApplication/FormWrapper"
 
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
 		<HashRouter>
 		<Nav />
 			<Routes>
-				<Route path="/" element={<FormApplication />} />
+				<Route path="/" element={<FormWrapper/>} />
 				<Route path="/edit/:id" element={<EditPage />} />
 				<Route path="/table/*" element={<Table />} />
 				<Route path="*" element={<ErrorPage />} />

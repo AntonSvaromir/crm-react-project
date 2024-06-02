@@ -158,15 +158,15 @@ body {
 	margin-bottom: 0px;
 }
 .left-panel__btn {
-  padding: 0;
-  text-align: left;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  /* отображаем курсор в виде руки при наведении; некоторые
+	padding: 0;
+	text-align: left;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	/* отображаем курсор в виде руки при наведении; некоторые
   считают, что необходимо оставлять стрелочный вид для кнопок */
-  cursor: pointer;
+	cursor: pointer;
 }
 .left-panel__navigation .left-panel__btn {
 	color: #cbdceb;
@@ -804,7 +804,6 @@ body.with-nav {
 	padding-top: 60px;
 }
 
-
 body.with-nav .left-panel {
 	top: 60px;
 	bottom: 0px;
@@ -815,59 +814,94 @@ body.with-nav .left-panel {
 /* --------- Стили страницы 404 */
 
 .error__wrap {
-	margin:0 auto;
-	width:1000px;
+	margin: 0 auto;
+	width: 1000px;
 }
-.error__logo h1{
-	font-size:200px;
-	color:#FF7A00;
-	text-align:center;
-	margin-bottom:1px;
-	text-shadow:4px 4px 1px white;
-}	
-.error__logo h2{
-	color:#B1A18D;
-	font-size:40px;
-	margin-top:10px;
-	text-align:center;
-}	
-.error__logo p span{
-	color:lightgreen;
+.error__logo h1 {
+	font-size: 200px;
+	color: #ff7a00;
+	text-align: center;
+	margin-bottom: 1px;
+	text-shadow: 4px 4px 1px white;
+}
+.error__logo h2 {
+	color: #b1a18d;
+	font-size: 40px;
+	margin-top: 10px;
+	text-align: center;
+}
+.error__logo p span {
+	color: lightgreen;
 }
 .error__sub {
 	display: block;
 	margin-top: 40px;
-	text-align:center;
-
+	text-align: center;
 }
-.error__sub a{
-	color:#ff7a00;
-	text-decoration:none;
-	padding:15px;
-	font-size:22px;
+.error__btn  {
+	color: #ff7a00;
+	border: none;
+	font: inherit;
+	padding: 15px;
+	font-size: 28px;
 	font-family: arial, serif;
-	font-weight:bold;
-}	
+	font-weight: bold;
+	background-color: transparent;
+}
+.error__btn:hover {
+	color: #f9c417;
+}
+/* Страница ошибки формы */
+.error-form__wrap {
+	margin: 0 auto;
+	max-width: 300px;
+}
+.error-form__logo h1 {
+	font-size: 120px;
+	color: #ff7a00;
+	text-align: center;
+	margin-bottom: 1px;
+	text-shadow: 2px 2px 1px rgb(199, 252, 124);
+}
+.error-form__logo h2 {
+	color: #b1a18d;
+	font-size: 30px;
+	margin-top: 10px;
+	text-align: center;
+}
+.error-form__sub {
+	margin-top: 35px;
+}
+.error-form__btn {
+	border: none;
+	font: inherit;
+	font-size: 20px;
+	color: #ff7a00;
+	background-color: transparent;
+}
+.error-form__btn:hover {
+	color: #f9c417;
+}
 /* Стили пустой страницы */
 .empty__wrap {
-	margin:0 auto;
-	width:1000px;
+	margin: 0 auto;
+	width: 1000px;
 }
 
-.empty__logo h1{
-	font-size:80px;
-	color:#FF7A00;
-	text-align:center;
+.empty__logo h1 {
+	font-size: 80px;
+	color: #ff7a00;
+	text-align: center;
 	margin-top: 40px;
-	margin-bottom:1px;
-	text-shadow:4px 4px 1px white;
-}	
-.empty__logo h2{
-	color:#B1A18D;
-	font-size:40px;
-	margin-top:10px;
-	text-align:center;
-}	
+	margin-bottom: 1px;
+	text-shadow: 4px 4px 1px white;
+}
+.empty__logo h2 {
+	color: #b1a18d;
+	font-size: 40px;
+	margin-top: 10px;
+	text-align: center;
+}
 
 /* ---------- Стили навигации по страницам */
 .page__navigation {
@@ -883,15 +917,15 @@ body.with-nav .left-panel {
 .page__navigation-link--active {
 	color: #ff7a00;
 }
-.btn__go-back{
-	padding: 0;
-  text-align: left;
-  border: none;
-  font: inherit;
-  font-size: 1.1rem;
-  color: #174bc3;
-  background-color: transparent;
 
+.btn__go-back {
+	padding: 0;
+	text-align: left;
+	border: none;
+	font: inherit;
+	font-size: 1.1rem;
+	color: #174bc3;
+	background-color: transparent;
 }
 .btn__go-back:hover {
 	color: #5cb4ef;

@@ -29,13 +29,13 @@ export default function Table() {
 	// Массив номеров страниц с заявками
 	const [pagesQuantity, setPagesQuantity] = useState([])
 	// Перенаправление на старте
-	const location = new URL(window.location).href
+	const location = new URL(window.location).hash
 	
 	const navigate = useNavigate()
 	useEffect(() => {
 		if (
-			location === 'http://localhost:3000/#/table' ||
-			location === 'http://localhost:3000/#/table/table'
+			location === '#/table' ||
+			location === '#/table/table'
 		) {
 			navigate(pageLocationLocalStorage)
 		}
@@ -43,8 +43,12 @@ export default function Table() {
 
 	// Сохранение в LocaleStorage значений фильтра и страницы
 	const pageLocation = useLocation().pathname.split('/')
-	const pageLocationLastValue = pageLocation[pageLocation.length - 1]
-	localStorage.setItem('pageLocation', JSON.stringify(pageLocationLastValue))
+
+	// const pageLocationLastValue = pageLocation[pageLocation.length - 1]
+	localStorage.setItem(
+		'pageLocation',
+		JSON.stringify(pageLocation[pageLocation.length - 1]),
+	)
 	localStorage.setItem('status', JSON.stringify(status))
 	localStorage.setItem('product', JSON.stringify(product))
 
