@@ -30,7 +30,7 @@ export default function Table() {
 	const [pagesQuantity, setPagesQuantity] = useState([])
 	// Перенаправление на старте
 	const location = new URL(window.location).href
-	console.log(location);
+	
 	const navigate = useNavigate()
 	useEffect(() => {
 		if (
