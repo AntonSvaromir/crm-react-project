@@ -1,21 +1,20 @@
-import { useNavigate } from "react-router-dom"
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { TableContext } from './Table'
 
-export default function TopPanel({ setProduct, product, setStatus, status }) {
-	const nav = useNavigate()
+export default function TopPanel() {
+	const { setProduct, product, setStatus, status } = useContext(TableContext)
+	const navigate = useNavigate()
 	return (
 		<form action=''>
 			<div className='row mb-3 justify-content-start'>
 				<div className='col'>
-					<div
-						id='topStatusBar'
-						className='btn-group'
-						role='group'
-						aria-label='...'>
+					<div className='btn-group'>
 						<button
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('all')
-								nav('page1')
+								navigate('page1')
 							}}
 							className={`btn btn-light ${status === 'all' ? 'active' : ''}`}>
 							Все
@@ -24,7 +23,7 @@ export default function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('new')
-								nav('page1')
+								navigate('page1')
 							}}
 							className={`btn btn-light ${status === 'new' ? 'active' : ''}`}>
 							Новые
@@ -33,7 +32,7 @@ export default function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('inWork')
-								nav('page1')
+								navigate('page1')
 							}}
 							className={`btn btn-light ${
 								status === 'inWork' ? 'active' : ''
@@ -44,7 +43,7 @@ export default function TopPanel({ setProduct, product, setStatus, status }) {
 							onClick={(evt) => {
 								evt.preventDefault()
 								setStatus('complete')
-								nav('page1')
+								navigate('page1')
 							}}
 							className={`btn btn-light ${
 								status === 'complete' ? 'active' : ''
@@ -59,8 +58,8 @@ export default function TopPanel({ setProduct, product, setStatus, status }) {
 						value={product}
 						onChange={(evt) => {
 							setProduct(evt.target.value)
-							nav('page1')
-							}}>
+							navigate('page1')
+						}}>
 						<option value='all'>Все продукты</option>
 						<option value='course-html'>Курс по верстке</option>
 						<option value='course-js'>Курс по JavaScript</option>

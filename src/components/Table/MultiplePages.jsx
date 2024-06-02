@@ -1,17 +1,21 @@
 import { Route, Routes } from 'react-router-dom'
 import Requests from './Requests'
-import { useEffect } from 'react'
-import { separationMultiple } from '../../utils/function'
+import { useContext, useEffect } from 'react'
+import { filterRequest, separationMultiple } from '../../utils/function'
 import EmptyPage from './EmptyPage'
+import { TableContext } from './Table'
 
-export default function MultiplePages({ data, setPagesRequest, status, product }) {
-	const pagesData = separationMultiple(data, 10)
+export default function MultiplePages() {
+	const { data, product, status, setPagesQuantity } = useContext(TableContext)
+	const filteredData = filterRequest(data, product, status)
+
+	const pagesData = separationMultiple(filteredData, 10)
 
 	useEffect(() => {
-		setPagesRequest(pagesData.map((item, index) => index + 1))
+		setPagesQuantity(pagesData.map((item, index) => index + 1))
 	}, [status, product]) 
 
-	const pagesRoute = pagesData.map((item, index) => {
+	const pagesRouteRender = pagesData.map((item, index) => {
 		return (
 			<Route
 				key={index}
@@ -23,8 +27,8 @@ export default function MultiplePages({ data, setPagesRequest, status, product }
 
 	return (
 		<Routes>
-			{pagesRoute.length > 0 ? (
-				pagesRoute
+			{pagesRouteRender.length > 0 ? (
+				pagesRouteRender
 			) : (
 				<Route path='/page1' element={<EmptyPage />} />
 			)}

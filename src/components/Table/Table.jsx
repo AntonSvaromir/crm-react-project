@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import {
 	TopPanel,
 	LeftPanel,
@@ -7,11 +7,11 @@ import {
 	LinksToPage,
 } from './index.js'
 import { serverPath } from '../../utils/constant'
-import { filterNewRequests, filterRequest } from '../../utils/function.js'
 import useFetch from '../../utils/useFetch'
 import ErrorPage from '../ErrorPage'
 import { useLocation, useNavigate } from 'react-router-dom'
 
+export const TableContext = createContext(null)
 export default function Table() {
 	document.body.classList.remove('flex-center', 'radial-bg')
 	document.body.classList.add('body--dashboard')
@@ -21,14 +21,13 @@ export default function Table() {
 		JSON.parse(localStorage.getItem('product')) || 'all'
 	const pageLocationLocalStorage =
 		JSON.parse(localStorage.getItem('pageLocation')) || 'page1'
-
+	// Получение данных с сервера
 	const { data, isLoading, error } = useFetch(serverPath + 'requests')
 	const [product, setProduct] = useState(productLocalStorage)
 	const [status, setStatus] = useState(statusLocalStorage)
-	// Количество новых заявок
-	const [newRequestAmount, setNewRequestAmount] = useState(0)
+
 	// Массив номеров страниц с заявками
-	const [pagesRequest, setPagesRequest] = useState([])
+	const [pagesQuantity, setPagesQuantity] = useState([])
 
 	const location = new URL(window.location).href
 	const navigate = useNavigate()
@@ -45,33 +44,25 @@ export default function Table() {
 	localStorage.setItem('status', JSON.stringify(status))
 	localStorage.setItem('product', JSON.stringify(product))
 
-	// Получение количества новых заявок
-	useEffect(() => {
-		if (data) {
-			setNewRequestAmount(filterNewRequests(data))
-		}
-	}, [data])
-
-	console.log('Render');
+	console.log('Render')
 
 	return (
-		<>
-			<LeftPanel
-				setStatus={setStatus}
-				status={status}
-				newRequestAmount={newRequestAmount}
-			/>
+		<TableContext.Provider
+			value={{
+				data,
+				status,
+				setStatus,
+				product,
+				setProduct,
+				setPagesQuantity,
+			}}>
+			<LeftPanel />
 			<div className='main-wrapper'>
 				<div className='container-fluid'>
 					<div className='admin-heading-1'>Все заявки</div>
 
-					<TopPanel
-						setProduct={setProduct}
-						product={product}
-						setStatus={setStatus}
-						status={status}
-					/>
-					<LinksToPage pagesRequest={pagesRequest} />
+					<TopPanel />
+					<LinksToPage pagesQuantity={pagesQuantity} />
 					<table className='table fs-14'>
 						<TableHead />
 						<tbody>
@@ -89,20 +80,11 @@ export default function Table() {
 									</th>
 								</tr>
 							)}
-							{data && (
-								<MultiplePages
-									data={filterRequest(data, product, status)}
-									status={status}
-									product={product}
-									setPagesRequest={setPagesRequest}
-								/>
-							)}
+							{data && <MultiplePages />}
 						</tbody>
 					</table>
-					
 				</div>
 			</div>
-		</>
+		</TableContext.Provider>
 	)
 }
-
