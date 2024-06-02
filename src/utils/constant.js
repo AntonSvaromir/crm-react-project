@@ -1,5 +1,4 @@
-const serverPath = 'http://localhost:8000/'
-// const serverPath = 'https://hallowed-three-mousepad.glitch.me/'
+const serverPath = 'https://hallowed-three-mousepad.glitch.me/'
 
 
 const statusName = {

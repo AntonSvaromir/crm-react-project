@@ -10,7 +10,7 @@ export default function Form({ lastNumberRequest, setUpdate, update }) {
 	const [product, setProduct] = useState('course-html')
 
 	const number = lastNumberRequest[0]
-	console.log(number);
+	
 	// Заполняем поля случайными данными
 	useEffect(() => {
 		const test = getTestData(testData)
@@ -23,8 +23,8 @@ export default function Form({ lastNumberRequest, setUpdate, update }) {
 	// Добавляем заявку в базу данных
 	const handleSubmit = (evt) => {
 		evt.preventDefault()
-		const date = new Date().toISOString()
 		// Формируем заявку
+		const date = new Date().toISOString()
 		const newLastNumber = {
 			...number,
 			numberRequest: ++number.numberRequest,
