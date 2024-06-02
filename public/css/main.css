@@ -883,3 +883,16 @@ body.with-nav .left-panel {
 .page__navigation-link--active {
 	color: #ff7a00;
 }
+.btn__go-back{
+	padding: 0;
+  text-align: left;
+  border: none;
+  font: inherit;
+  font-size: 1.1rem;
+  color: #174bc3;
+  background-color: transparent;
+
+}
+.btn__go-back:hover {
+	color: #5cb4ef;
+}

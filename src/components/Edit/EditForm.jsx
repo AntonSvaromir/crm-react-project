@@ -2,7 +2,7 @@ import { useState } from "react";
 import { serverPath } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 
-export default function EditForm({ data, backLink }) {
+export default function EditForm({ data }) {
 	const [fullName, setFullName] = useState(data.fullName)
 	const [phone, setPhone] = useState(data.phone)
 	const [email, setEmail] = useState(data.email)
@@ -24,7 +24,7 @@ export default function EditForm({ data, backLink }) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(editRequest),
 		})
-			.then(() => navigate(backLink))
+			.then(() => navigate(-1))
 			.catch((error) => error.message)
 	}
 

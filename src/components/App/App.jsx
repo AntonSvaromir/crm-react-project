@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 import Nav from "../Nav/Nav"
 import FormApplication from "../FormApplication/FormApplication"
 import EditPage from "../Edit/EditPage"
@@ -8,7 +8,7 @@ import ErrorPage from "../ErrorPage"
 
 export default function App() {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 		<Nav />
 			<Routes>
 				<Route path="/" element={<FormApplication />} />
@@ -16,7 +16,7 @@ export default function App() {
 				<Route path="/table/*" element={<Table />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
-		</BrowserRouter>
+		</HashRouter>
 		
 	)
 }

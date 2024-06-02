@@ -28,11 +28,15 @@ export default function Table() {
 
 	// Массив номеров страниц с заявками
 	const [pagesQuantity, setPagesQuantity] = useState([])
-
+	// Перенаправление на старте
 	const location = new URL(window.location).href
+	console.log(location);
 	const navigate = useNavigate()
 	useEffect(() => {
-		if (location === 'http://localhost:3000/table') {
+		if (
+			location === 'http://localhost:3000/#/table' ||
+			location === 'http://localhost:3000/#/table/table'
+		) {
 			navigate(pageLocationLocalStorage)
 		}
 	}, [])
@@ -44,7 +48,6 @@ export default function Table() {
 	localStorage.setItem('status', JSON.stringify(status))
 	localStorage.setItem('product', JSON.stringify(product))
 
-	console.log('Render')
 
 	return (
 		<TableContext.Provider
